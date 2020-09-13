@@ -1,4 +1,5 @@
 const POST=require('../models/post')
+let uuidv1=require('uuidv1')
 
 
 exports.getPosts=(req,res)=>{
@@ -10,9 +11,10 @@ exports.getPosts=(req,res)=>{
         })
     })
     .catch(err=>console.log(err))
+};
 
 
-}    
+
 
 
 exports.createPost=(req,res)=>{

@@ -1,15 +1,18 @@
 const express=require('express')
 
 const {getPosts,createPost}=require('../controllers/post')
-const validator=require('../validators/index')
+const {createPostValidator}=require('../validators/index')
+const {userById}=require('../controllers/user')
 
+const {requireSignin}=require('../controllers/auth')
 
 const router=express.Router()
 
+router.get('/', getPosts)
 
-router.get('/',getPosts)
-router.post('/post',validator.createPostValidator,createPost)
+router.post('/post',requireSignin,createPostValidator,createPost)
 
+router.param("userId",userById)
 
 
 module.exports=router;
