@@ -1,7 +1,8 @@
 const JWT=require('jsonwebtoken')
 const User = require('../models/user')
 require('dotenv').config()
-const expressJwt=require('express-jwt')
+const expressJwt=require('express-jwt');
+const { xorBy } = require('lodash');
 
 
 exports.signup=async (req,res)=>{
